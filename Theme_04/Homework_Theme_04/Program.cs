@@ -41,7 +41,7 @@ namespace Homework_Theme_04
             // Худшая прибыль в месяцах: 7, 4, 1, 5, 12
             // Месяцев с положительной прибылью: 10
 
-            int[,] matrix = new int[12, 4]; // Задание двумерного массива, в котором 3 строки и 4 столбца
+            int[,] matrix = new int[12, 4]; 
             int k = 0;
             int mOnth = 1;
 
@@ -59,29 +59,21 @@ namespace Homework_Theme_04
 
             for (int i = 0; i < 12; i++)
             {
-                for (int j = 1; j < 3; j++)
+                for (int jo = 0; jo < 4; jo++)
                 {
-                    matrix[i, j] = r.Next(100);
-                }
-            }
+                    if (jo < 3)
+                        matrix[i, jo] = r.Next(100);
+                  
+                    if (jo == 3)
+                          matrix[i, jo] = matrix[i, jo - 2] - matrix[i, jo-1];
 
-            for (int i = 0; i < 12; i++)
-            {
-                int j = 3;
-                
-                 matrix[i, j] = matrix[i, j-2] - matrix[i, j - 1];
-                
-            }
-
-            for (int i = 0; i < 12; i++)
-            {
-                for (int j = 0; j < 4; j++)
-                {
-                    Console.Write(matrix[i, j].ToString().PadRight(18));
+                    Console.Write(matrix[i, jo].ToString().PadRight(18));
                 }
                 Console.WriteLine();
             }
-
+                       
+            
+            int[] nums = new int[12];
 
             for (int i = 0; i < 12; i++)
             {
@@ -89,23 +81,12 @@ namespace Homework_Theme_04
                                 
                 if (matrix[i, j] < 0)
                     k++;
-                                                
-            }
-            
-            Console.WriteLine("Месяцев с положительной прибылью: " + k);
-
-            int[] nums = new int[12];
-            for (int i = 0; i < 12; i++)
-            {
-                int j = 3;
-
                 nums[i] = matrix[i, j];
-
             }
-
+            Console.WriteLine("Месяцев с положительной прибылью: " + k);
             int temp;
-            
 
+            Console.WriteLine("Худшая прибыль в месяцах: ");
             for (int i = 0; i < 12; i++)
             {
                 for (int j = i + 1; j < 12; j++)
@@ -117,25 +98,34 @@ namespace Homework_Theme_04
                         nums[j] = temp;
                     }
                 }
-            }
 
-            // вывод
-            Console.WriteLine("Худшая прибыль в месяцах: ");
-            for (int i = 0; i < 12; i++)
-            {
                 if (nums[i] <= 0)
                 {
-                    Console.Write(nums[i]+", ");
+                    Console.Write(nums[i] + ", ");
                 }
-                       
             }
-
-
-
-
-
             Console.ReadKey();
 
+
+
+
+
+            //for (int i = 0; i < 12; i++)
+            //{
+            //    int j = 3;
+
+            //     matrix[i, j] = matrix[i, j-2] - matrix[i, j - 1];
+
+            //}
+
+            //for (int i = 0; i < 12; i++)
+            //{
+            //    for (int j = 0; j < 4; j++)
+            //    {
+            //        Console.Write(matrix[i, j].ToString().PadRight(18));
+            //    }
+            //    Console.WriteLine();
+            //}
 
             // * Задание 2
             // Заказчику требуется приложение строящее первых N строк треугольника паскаля. N < 25
