@@ -41,91 +41,75 @@ namespace Homework_Theme_04
             // Худшая прибыль в месяцах: 7, 4, 1, 5, 12
             // Месяцев с положительной прибылью: 10
 
-            int[,] matrix = new int[12, 4]; 
-            int k = 0;
-            int mOnth = 1;
+            //int[,] matrix = new int[12, 4]; 
+            //int k = 0;
+            //int mOnth = 1;
 
-            Random r = new Random();
+            //Random r = new Random();
 
-            Console.WriteLine("Месяц    Доход, тыс. руб.  Расход, тыс. руб.     Прибыль, тыс. руб. ");
-            Console.WriteLine();
-            for (int i = 0; i < 12; i++)
-            {
-                int j = 0;
-      
-                matrix[i, j] = mOnth;
-                mOnth++;
-            }
+            //Console.WriteLine("Месяц    Доход, тыс. руб.  Расход, тыс. руб.     Прибыль, тыс. руб. ");
+            //Console.WriteLine();
+            //for (int i = 0; i < 12; i++)
+            //{
+            //    int j = 0;
 
-            for (int i = 0; i < 12; i++)
-            {
-                for (int jo = 0; jo < 4; jo++)
-                {
-                    if (jo < 3)
-                        matrix[i, jo] = r.Next(100);
-                  
-                    if (jo == 3)
-                          matrix[i, jo] = matrix[i, jo - 2] - matrix[i, jo-1];
+            //    matrix[i, j] = mOnth;
+            //    mOnth++;
+            //}
 
-                    Console.Write(matrix[i, jo].ToString().PadRight(18));
-                }
-                Console.WriteLine();
-            }
-                       
-            
-            int[] nums = new int[12];
+            //for (int i = 0; i < 12; i++)
+            //{
+            //    for (int jo = 0; jo < 4; jo++)
+            //    {
+            //        if (jo < 3)
+            //            matrix[i, jo] = r.Next(100);
 
-            for (int i = 0; i < 12; i++)
-            {
-                int j = 3;
-                                
-                if (matrix[i, j] < 0)
-                    k++;
-                nums[i] = matrix[i, j];
-            }
-            Console.WriteLine("Месяцев с положительной прибылью: " + k);
-            int temp;
+            //        if (jo == 3)
+            //              matrix[i, jo] = matrix[i, jo - 2] - matrix[i, jo-1];
 
-            Console.WriteLine("Худшая прибыль в месяцах: ");
-            for (int i = 0; i < 12; i++)
-            {
-                for (int j = i + 1; j < 12; j++)
-                {
-                    if (nums[i] > nums[j])
-                    {
-                        temp = nums[i];
-                        nums[i] = nums[j];
-                        nums[j] = temp;
-                    }
-                }
-
-                if (nums[i] <= 0)
-                {
-                    Console.Write(nums[i] + ", ");
-                }
-            }
-            Console.ReadKey();
+            //        Console.Write(matrix[i, jo].ToString().PadRight(18));
+            //    }
+            //    Console.WriteLine();
+            //}
 
 
-
-
+            //int[] nums = new int[12];
 
             //for (int i = 0; i < 12; i++)
             //{
             //    int j = 3;
 
-            //     matrix[i, j] = matrix[i, j-2] - matrix[i, j - 1];
-
+            //    if (matrix[i, j] < 0)
+            //        k++;
+            //    nums[i] = matrix[i, j];
             //}
+            //Console.WriteLine("Месяцев с положительной прибылью: " + k);
+            //int temp;
 
+            //Console.WriteLine("Худшая прибыль в месяцах: ");
             //for (int i = 0; i < 12; i++)
             //{
-            //    for (int j = 0; j < 4; j++)
+            //    for (int j = i + 1; j < 12; j++)
             //    {
-            //        Console.Write(matrix[i, j].ToString().PadRight(18));
+            //        if (nums[i] > nums[j])
+            //        {
+            //            temp = nums[i];
+            //            nums[i] = nums[j];
+            //            nums[j] = temp;
+            //        }
             //    }
-            //    Console.WriteLine();
+
+            //    if (nums[i] <= 0)
+            //    {
+            //        Console.Write(nums[i] + ", ");
+            //    }
             //}
+            //Console.ReadKey();
+
+
+
+
+
 
             // * Задание 2
             // Заказчику требуется приложение строящее первых N строк треугольника паскаля. N < 25
@@ -154,6 +138,44 @@ namespace Homework_Theme_04
             // Справка: https://ru.wikipedia.org/wiki/Треугольник_Паскаля
 
 
+
+            Console.Write("\nВедите Число N: ");
+            int NumN = Convert.ToInt32(Console.ReadLine());
+
+         
+            int KolStolb = NumN - (NumN-1);
+
+            
+
+            int[,] matrix = new int[NumN, NumN];
+
+            Random r = new Random();
+
+
+
+            int SumYach = 0;
+            Console.WriteLine();
+            for (int i = 0; i < NumN; i++ )
+            {
+                
+                for (int j = 0; j < KolStolb; j++ )
+                {
+                    if (j>0 && (matrix[i - 1, j - 1] + matrix[i - 1, j]) > 1) matrix[i, j] = (matrix[i - 1, j - 1] + matrix[i - 1, j]); else matrix[i, j] = 1;
+                    
+
+               
+
+
+                    Console.Write(matrix[i, j].ToString().PadRight(10));
+                }
+                Console.WriteLine();
+                KolStolb++;
+            }
+            Console.ReadKey();
+
+
+
+
             // 
             // * Задание 3.1
             // Заказчику требуется приложение позволяющщее умножать математическую матрицу на число
@@ -170,6 +192,45 @@ namespace Homework_Theme_04
             //  5 х |  4  5  7  | = | 20  25  35  |
             //      |  5  3  1  |   | 25  15   5  |
             //
+
+
+            //Console.Write("\nВедите число: ");
+            //int Chislo = Convert.ToInt32(Console.ReadLine());
+
+            //Console.Write("\nВедите количество столбцов: ");
+            //int KolStolb = Convert.ToInt32(Console.ReadLine());
+
+            //Console.Write("\nВедите количество строк: ");
+            //int KolSrok = Convert.ToInt32(Console.ReadLine());
+
+            //int[,] matrix = new int[KolSrok, KolStolb];
+
+            //Random r = new Random();
+
+
+
+            //int SumYach = 0;
+            //Console.WriteLine();
+            //for (int i = 0; i < KolSrok; i++)
+            //{
+            //    for (int j = 0; j < KolStolb; j++)
+            //    {
+            //        SumYach = Chislo * r.Next(100);
+            //        matrix[i, j] = SumYach;
+
+
+            //        Console.Write(matrix[i, j].ToString().PadRight(5));
+            //    }
+            //    Console.WriteLine();
+            //}
+
+
+
+            //Console.ReadKey();
+
+
+
+
             //
             // ** Задание 3.2
             // Заказчику требуется приложение позволяющщее складывать и вычитать математические матрицы
@@ -189,6 +250,42 @@ namespace Homework_Theme_04
             //  |  4  5  7  | - |  2  5  6  | = |  2   0   1  |
             //  |  5  3  1  |   |  3  6  7  |   |  2  -3  -6  |
             //
+
+            //Console.Write("\nВедите число: ");
+            //int Chislo = Convert.ToInt32(Console.ReadLine());
+
+            //Console.Write("\nВедите количество столбцов: ");
+            //int KolStolb = Convert.ToInt32(Console.ReadLine());
+
+            //Console.Write("\nВедите количество строк: ");
+            //int KolSrok = Convert.ToInt32(Console.ReadLine());
+
+            //int[,] matrix = new int[KolSrok, KolStolb];
+
+            //Random r = new Random();
+
+
+
+            //int SumYach = 0;
+            //Console.WriteLine();
+            //for (int i = 0; i < KolSrok; i++)
+            //{
+            //    for (int j = 0; j < KolStolb; j++)
+            //    {
+            //        SumYach = Chislo * r.Next(100);
+            //        matrix[i, j] = SumYach;
+
+
+            //        Console.Write(matrix[i, j].ToString().PadRight(5));
+            //    }
+            //    Console.WriteLine();
+            //}
+
+
+
+            //Console.ReadKey();
+
+
             // *** Задание 3.3
             // Заказчику требуется приложение позволяющщее перемножать математические матрицы
             // Справка https://ru.wikipedia.org/wiki/Матрица_(математика)
